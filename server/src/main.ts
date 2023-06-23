@@ -2,8 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import path, { join } from 'path';
-import * as express from 'express'; // 추가
-// import * as path from 'path'; // 추가
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
