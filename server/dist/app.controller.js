@@ -15,9 +15,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const path = require("path");
+const test_db_service_1 = require("./test-db.service");
 let AppController = exports.AppController = class AppController {
-    root(res) {
+    constructor(testDbService) {
+        this.testDbService = testDbService;
+    }
+    async root(res) {
+        const users = await this.testDbService.getUsers();
+        console.log(users);
         res.sendFile(path.join(__dirname, './public/index.html'));
+    }
+    async getUsers(res) {
+        try {
+            const users = await this.testDbService.getUsers();
+            res.json(users);
+        }
+        catch (error) {
+            res.status(500).json({ message: 'Internal server error' });
+        }
     }
 };
 __decorate([
@@ -25,9 +40,17 @@ __decorate([
     __param(0, (0, common_1.Res)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], AppController.prototype, "root", null);
+__decorate([
+    (0, common_1.Get)('/api/users'),
+    __param(0, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "getUsers", null);
 exports.AppController = AppController = __decorate([
-    (0, common_1.Controller)()
+    (0, common_1.Controller)(),
+    __metadata("design:paramtypes", [test_db_service_1.TestDbService])
 ], AppController);
 //# sourceMappingURL=app.controller.js.map
