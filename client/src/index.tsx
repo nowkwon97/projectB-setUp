@@ -8,6 +8,7 @@
 // ReactDOM.render(<App />, document.getElementById('root'));
 
 import React, { useEffect, useState } from 'react';
+import * as ReactDOM from 'react-dom';
 import axios from 'axios';
 
 interface User {
@@ -34,6 +35,9 @@ const App: React.FC = () => {
 
   return (
     <div>
+      <h1>Hello World!!</h1>
+
+      <h2>Users:</h2>
       {/* 사용자 정보를 화면에 출력 */}
       {users.map(user => (
         <div key={user._id}>
@@ -45,4 +49,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+ReactDOM.render(<App />, document.getElementById('root'));
