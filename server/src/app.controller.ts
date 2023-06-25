@@ -8,6 +8,7 @@ import { User } from './user.schema';
 export class AppController {
   constructor(private readonly testDbService: TestDbService) {}
 
+  // '/' 경로로 요청이 들어올 시
   @Get()
   async root(@Res() res: Response) {
     // 데이터베이스에서 사용자 정보를 가져옴
@@ -20,6 +21,7 @@ export class AppController {
     res.sendFile(path.join(__dirname, './public/index.html'));
   }
 
+  // '/api/users'경로로 요청이 들어올 시
   @Get('/api/users')
   async getUsers(@Res() res: Response) {
     try {

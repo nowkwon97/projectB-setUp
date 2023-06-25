@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as ReactDOM from 'react-dom';
 import axios from 'axios';
 
+//서버에서 받아온 사용자 정보의 형식을 정의하는데 사용됩니다.
 interface User {
   _id: string;
   name: string;
@@ -30,6 +31,8 @@ const App: React.FC = () => {
 
       <h2>Users:</h2>
       {/* 사용자 정보를 화면에 출력 */}
+      {/* 배열을 순회하면서 각 사용자 정보를 화면에 출력합니다. */}
+      {/* users.map() 메서드를 사용하여 배열을 JSX 요소로 변환합니다. */}
       {users.map(user => (
         <div key={user._id}>
           <p>Name: {user.name}</p>
