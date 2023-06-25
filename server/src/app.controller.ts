@@ -11,10 +11,10 @@ export class AppController {
   @Get()
   async root(@Res() res: Response) {
     // 데이터베이스에서 사용자 정보를 가져옴
-    const users: User[] = await this.testDbService.getUsers();
+    // const users: User[] = await this.testDbService.getUsers();
 
-    // 조회된 데이터를 콘솔에 출력
-    console.log(users);
+    // // 조회된 데이터를 콘솔에 출력
+    // console.log(users);
 
     // index.html 파일 반환
     res.sendFile(path.join(__dirname, './public/index.html'));

@@ -21,8 +21,6 @@ let AppController = exports.AppController = class AppController {
         this.testDbService = testDbService;
     }
     async root(res) {
-        const users = await this.testDbService.getUsers();
-        console.log(users);
         res.sendFile(path.join(__dirname, './public/index.html'));
     }
     async getUsers(res) {
